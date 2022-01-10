@@ -1,10 +1,12 @@
 import argparse
 import pickle
-import sys
+import sys,os
 
 import numpy as np
 
 from data_prep import batch_iter, createOneHotMosei2way, get_raw_data, createOneHot
+os.environ["CUDA_VISIBLE_DEVICES"]="0"
+
 
 seed = 1234
 
