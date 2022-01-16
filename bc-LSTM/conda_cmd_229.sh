@@ -1,2 +1,4 @@
-conda create -n lstm python==2.7
-conda activate lstm
+conda create -n lstm 
+#conda activate lstm
+
+#conda deactivate
