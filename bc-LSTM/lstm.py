@@ -72,16 +72,16 @@ def calc_test_result(result, test_label, test_mask):
 				true_label.append(np.argmax(test_label[i,j] ))
 				predicted_label.append(np.argmax(result[i,j] ))
 		
-	print "Confusion Matrix :"
-	print confusion_matrix(true_label, predicted_label)
-	print "Classification Report :"
-	print classification_report(true_label, predicted_label)
-	print "Accuracy ", accuracy_score(true_label, predicted_label)
+	print ("Confusion Matrix :")
+	print (confusion_matrix(true_label, predicted_label))
+	print ("Classification Report :")
+	print (classification_report(true_label, predicted_label))
+	print ("Accuracy ", accuracy_score(true_label, predicted_label))
 
 def unimodal(mode):
 
-	print 'starting unimodal ', mode
-	with open('./input/'+mode+'.pickle', 'rb') as handle:
+	print ('starting unimodal '), mode
+	with open('./input/'+mode+'.pickle', 'r') as handle:
 			(train_data, train_label, test_data, test_label, maxlen, train_length, test_length) = pickle.load(handle)
 
 	train_label = train_label.astype('int')
@@ -137,7 +137,7 @@ def unimodal(mode):
 
 def multimodal(unimodal_activations):
 
-	print "starting multimodal"
+	print ("starting multimodal")
 	#Fusion (appending) of features
 
 	train_data = np.concatenate((unimodal_activations['text_train'], unimodal_activations['audio_train'], unimodal_activations['video_train']), axis=2)
@@ -186,13 +186,13 @@ if __name__=="__main__":
 
 	if args.unimodal:
 
-		print "Training unimodals first"
+		print ("Training unimodals first")
 
 		modality = ['text', 'audio', 'video']
 		for mode in modality:
 			unimodal(mode)
 
-		print "Saving unimodal activations"
+		print ("Saving unimodal activations")
 		with open('unimodal.pickle', 'wb') as handle:
 			pickle.dump(unimodal_activations, handle, protocol=pickle.HIGHEST_PROTOCOL)
 

@@ -25,7 +25,7 @@ test_index = np.asarray(test[:,0], dtype = 'int')
 def main(name):
 
     path = "./data/"+name+"/"+name
-    print (path)
+    print(path)
     train_video_mapping=defaultdict(list)
     train_video_mapping_index=defaultdict(list)
     test_video_mapping=defaultdict(list)
